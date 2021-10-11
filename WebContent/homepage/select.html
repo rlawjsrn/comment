@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <button>ok</button>
+    <script>
+        //W3school 
+
+        // fetch('get.json')
+        //     .then(x => console.log(x)) //fetch('get.json')를 text형식으로 바꿈
+        //     .then(result => console.log(result));
+
+        // function createpage(val) {
+        //     console.log(val);
+        // }
+
+
+        // let div = document.createElement('div');
+        // div.setAttribute('data-id' , 20);
+        // div.setAttribute('data-name','Hong');
+
+        // localStorage.setItem('user-id', ' admin' )
+
+        // localStorage.setItem('data','hello')
+
+        // document.querySelector('button').onclick = function () {
+        //     console.log(localStorage.setItem)
+        // }
+
+
+
+        //W3school ObjectDefinitions
+        // let obj = {
+        //     name: 'Hong',
+        //     age: 20,
+        //     showName: function() {
+        //         return this.name + ',' + this.age;
+        //     }
+        // };
+        // obj = new Object();
+        // obj.name = 'Hwang';
+        // obj.age = 23;
+        // obj['hobby'] = 'reading';
+
+        // let trueOrFalse = true;
+        // console.log(typeof trueOrFalse)
+        // trueOrFalse = new Boolean(true);
+        // console.log(typeof trueOrFalse)
+
+
+
+        // const myObj = {
+        //     name: "John",
+        //     age: 30,
+        //     cars: [{
+        //             name: "Ford",
+        //             models: ["Fiesta", "Focus", "Mustang"]
+        //         },
+        //         {
+        //             name: "BMW",
+        //             models: ["320", "X3", "X5"]
+        //         },
+        //         {
+        //             name: "Fiat",
+        //             models: ["500", "Panda"]
+        //         }
+        //     ]
+        // }
+        // console.log(myObj.cars[0].name);
+        // console.log(myObj.cars[0].models[1]);
+
+
+
+        // const person = {
+        //     name: "John",
+        //     age: function(){
+        //         return 30;
+        //     }
+        // };
+
+        // person.age= person.age.toString();
+
+        // const json = JSON.stringify(person);
+
+        // const obj = JSON.parse(json);
+        // let fnc = obj.age;
+
+        // console.log(fnc);
+
+
+
+        // const person = {
+        //     firstName: "John",
+        //     lastName: "Doe",
+        //     language: "en",
+        //     get lang() {
+        //         return this.language;
+        //     },
+        //     set name(first) {
+        //         this.firstName = first;
+        //     }
+        // };
+
+        // person.name = 'Hong';
+        // consoel.log(person.firstName, person.lang); //lang은 function이 아님. 
+
+
+
+
+        const father = {
+            firstName: 'Kildong',
+            lastName: 'Hong',
+            age: 30
+        };
+        const mother = {
+            firstName: 'heeyoung',
+            lastName: 'Hwang',
+            age: 27
+        };
+        mother.gender = 'female';
+
+        function Person(first, last, age, eye) {
+            this.firstName = first;
+            this.lastName = last;
+            this.age = age;
+            this.eyeColor = eye;
+            this.name = function () {
+                return this.first + ',' + this.lastName;
+            }
+        }
+        Person.prototype.gender = 'Male';
+
+        const son = new Person('민석', '홍', 3, '검정');
+        const daughter = new Person('민주', '홍', 3, '검정');
+        daughter.gender = 'Female';
+
+
+        console.log(father.age);
+        console.log(son.age, son.gender, son.name());
+        console.log(daughter.age, daughter.gender, daughter.name());
+
+        class Persons {
+            constructor(firstName, lastName, age) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+            }
+            showName() {
+                return this.firstName + ',' + this.lastName;
+            }
+        }
+        let lee = new Persons('순신', '이', 30);
+        console.log(lee.showName());
+    </script>
+</body>
+
+</html>
