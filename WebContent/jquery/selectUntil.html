@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/selectUntil.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div>
+        <h1>인접관계 </h1>
+            <p>내용1</p>
+            <p class="txt">내용2</p>
+            <p>내용3</p>
+            <p id="last">내용4</p>
+        </div>
+        <div>
+            <p>내용1</p>
+            <p>내용2</p>
+        </div>
+    </div>
+    <script>
+
+        $('div>p:nth-of-type(1)').html('para1'); //div의 p태그들 중에서 순서를 매김. 인덱스라서 첫번째 순서가(0)이 아니라 (1)임
+
+       $('.txt').prevUntil('h1').css({
+           'background-color': 'lightblue', 
+           'border':'2px solid #f00'
+        }); //여러개의 스타일 속성을 지정하고 싶을땐 오브젝트{}를 추가해준다 속성을 구분할 땐 ,(콜론) 속성에 값을 지정할 땐 :
+
+        let style2 = {
+            'background-color': 'lightblue', 
+           'border':'2px solid #f00'
+        };
+
+        $('.txt').nextUntil('#last').css(style2); //nextUtil('last'): id가 'last'인 것 까지만 가져오겠다.
+
+        $('.txt').closest('div').css('color','blue'); //가장 가까운 상위요소에서 div를 가져오겠다.
+    </script>
+</body>
+
+</html>

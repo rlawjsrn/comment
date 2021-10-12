@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery/basic.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){  //$(선택자) 
+            let p_html = $('div > p').html();
+            console.log(p_html);
+        }); 
+        let p = $('<p class ="first"> hello, world</p>');  //$:jquery오브젝트 let p = document.createElement('p'); //선택자 안에 $('p class ="first"> hello, world</p>')$('<p />')로 써도 됨.
+        $(p).css('background-color', 'yellow'); //p.innerHTML = 'hello,world';
+        console.log(p);
+
+        $('body').append(p); //p요소를 body태그에 붙이겠다.
+
+        //let p_html = $('div > p').html(); //div에 있는 p태그를 읽어오겠다.
+    </script>
+</head>
+
+<body>
+    <div>
+        <p>hello,world</p>
+    </div>
+</body>
+
+</html>
