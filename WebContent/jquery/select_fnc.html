@@ -8,29 +8,39 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(function(){
-            $('button').click(findFnc);          
+            $('button').eq(0).click(findFnc);  
+            $('button').eq(1).click(function (){ //체크라인 삭제
+                $('tbody>tr>td>input').filter(':checked').parentsUntil('tbody').remove();
+            })        
             });
         
 
-        function findFnc() {
-            let trVal = $('tbody>tr');
-            $(trVal).find('td:nth-child(1)').css('background-color','yellow');
-            $(trVal).find('input:checked').parent().css('background-color','blue');
+            
+            function findFnc() {
+                let trVal = $('tbody>tr');
+                $(trVal).find('td:nth-child(1)').css('background-color','yellow');
+                $(trVal).find('input:checked').parent().css('background-color','blue');
+                
+                //javascript
+                // trVal = document.querySelectorAll('tbody>tr>td:nth-child(1)');
+                // for(let tr of trVal) {
+                    //     tr.style.backgroundColor = 'yellow';
+                    // }
+                    
+                    //$('tbody>tr>td:contains(jpg)').css('color','red');
+                    $(trVal).find('td:contains(jpg)').css('color','red');
+                    
+                    console.log($(trVal).find('input:checked').parent().next().contents());
+                } 
 
-            //javascript
-            // trVal = document.querySelectorAll('tbody>tr>td:nth-child(1)');
-            // for(let tr of trVal) {
-            //     tr.style.backgroundColor = 'yellow';
-            // }
+            function delFnc() {
+                let delVal = $('tbody>tr>td>input');
+                $(delVal).find(':checked');
+                    
+                }
 
-            //$('tbody>tr>td:contains(jpg)').css('color','red');
-            $(trVal).find('td:contains(jpg)').css('color','red');
-
-            console.log($(trVal).find('input:checked').parent().next().contents());
-        } 
-
-        function filterFnc() {
-            let checkVal = $('tbody>tr>td>input:checked')
+            function filterFnc() {
+                let checkVal = $('tbody>tr>td>input:checked')
                 console.log(checkVal);
 
                 $(checkVal).filter(':checked').parent().parent().css('background-color','tomato').css('color','snow');
@@ -48,7 +58,7 @@
 
 <body>
     <div id="show"></div>
-    <button>클릭</button>
+    <button>클릭</button><button>삭제</button>
     <script>
         fetch('coffee.json')
         .then(x => x.json()) //then(function(x){return (x.json())})을 간단히 표현
