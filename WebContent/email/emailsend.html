@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>email/emailSend.html</title>
+<script src="../jquery/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	<form action='' id='mailFrm' onsubmit='return mailSubmit()'>
+		<div>
+			<label for='title'>제목:</label>
+			<input type='text' name='title' value='테스트'>	
+		</div>
+		<div>
+			<label for='content'>내용:</label> <!--for는 어떤 라벨의 속성입니다(?)  -->
+			<textarea name='content' cols='30' rows='10'></textarea>
+		</div>
+		<div>
+			<input type='submit' value='메일보내기'>
+			<input type='reset' value='다시작성'>
+		</div>
+	</form>
+	
+	<script>
+	//ajax호출로 사용자가 입력한 값 넘기기
+		function mailSubmit() {
+			//event.perventDefault();
+		
+			$.ajax({
+				url: '../MailSendServlet',
+				data: $('#mailFrm').serialize(), //serialize(): form태그안에있는 input태그의 값들을 가져오겠다
+				success: function(result) {//성공시 호출할 function
+					console.log(result);
+				},
+				error: function(reject) { //에러발생시 호출할 function
+					console.log(reject);
+				}
+			});
+			
+			return false;
+		}
+	</script>
+</body>
+
+</html>

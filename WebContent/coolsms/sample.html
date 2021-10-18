@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>coolsms/sample.html</title>
+<script src="../jquery/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<form action='' id='mailFrm' onsubmit='return smsSend()'>
+		<div>
+			<label for='content'>내용:</label> <!--for는 어떤 라벨의 속성입니다(?)  -->
+			<textarea name='content' cols='30' rows='10'></textarea>
+		</div>
+		<div>
+			<label for='receipt'>수신자:</label>
+			<input type='text' name='receipt'>
+		</div>
+		<div>
+			<input type='submit' value='문자보내기'>
+			<input type='reset' value='다시작성'>
+		</div>
+	</form>
+	
+	<script>
+		function smsSend() {
+			event.preventDefault();
+			
+			$.ajax({
+				url: '../SendSMSServlet',
+				data: { //보내고싶은 것만 따로 있다면 serialize()대신 아래와같이.
+					content: $('#mailFrm textarea[name="content"]').val(),
+					receipt: $('#mailFrm input[name="receipt"]').val()
+				},
+				//datatype: 'json',
+				success: function(result) {
+					console.log(result);
+				},
+				error: function(reject) {
+					console.log(reject);
+				}
+			});
+			
+			return false; //페이지 안넘어가게 하기위해 false값 리턴.
+		}
+	</script>
+</body>
+</html>
